@@ -4,7 +4,7 @@ import com.rat.squad.auth.dto.ControllerResult;
 import com.rat.squad.auth.dto.SignInRequest;
 import com.rat.squad.auth.dto.SignInResponse;
 import com.rat.squad.auth.dto.SignUpRequest;
-import com.rat.squad.auth.service.SignUpService;
+import com.rat.squad.auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 public class AuthController {
-    private final SignUpService signUpService;
+    private final AuthService signUpService;
 
     @PostMapping("/sign_in")
     public SignInResponse signIn(@RequestBody SignInRequest request) {

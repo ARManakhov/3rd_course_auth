@@ -7,13 +7,26 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+/**
+ * Project Security configuration file
+ */
 @Configuration
 public class SecurityConfiguration {
+    /**
+     * creates bean that encode and decode passwords
+     *
+     * @return BCryptPasswordEncoder
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * Web Security configuration
+     * allows all requests for all users
+     * also disable csrf
+     */
     @Configuration
     public static class DefaultSecurityConfiguration extends WebSecurityConfigurerAdapter {
 

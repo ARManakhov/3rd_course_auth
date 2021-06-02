@@ -4,6 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+
+/**
+ * Data class, that represents standard response
+ */
 @ToString
 @Getter
 @Setter
@@ -28,6 +32,11 @@ public class ControllerResult {
         this.result = result;
     }
 
+    /**
+     * method to create success ControllerResult with message
+     * @param message message for client
+     * @return new ControllerResult with success = true and message
+     */
     public static ControllerResult successResult(String message) {
         ControllerResult result = new ControllerResult();
         result.success = true;
@@ -35,6 +44,12 @@ public class ControllerResult {
         return result;
     }
 
+
+    /**
+     * method to create fail ControllerResult with message
+     * @param message message for client
+     * @return new ControllerResult with success = false and message
+     */
     public static ControllerResult failResult(String message) {
         ControllerResult result = new ControllerResult();
         result.success = false;

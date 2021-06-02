@@ -5,6 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+/**
+ * Data class, that represents sign in response body
+ */
 @Data
 @Builder
 @NoArgsConstructor

@@ -3,6 +3,7 @@ server:
   port: 8081
 
 spring:
+  #database configurations
   datasource:
       url: jdbc:postgresql://localhost:5432/storage
       username: postgres
@@ -12,6 +13,7 @@ spring:
     hibernate:
       ddl-auto: update
 
+#logs configurations
 logging:
   config: classpath:logback-spring.xml
   file:
