@@ -6,8 +6,11 @@ import com.rat.squad.auth.dto.SignInResponse;
 import com.rat.squad.auth.dto.SignUpRequest;
 import org.springframework.stereotype.Service;
 
+/**
+ * interface of auth service
+ */
 @Service
-public interface SignUpService {
+public interface AuthService {
     SignInResponse signUp(SignUpRequest form);
 
     SignInResponse signIn(SignInRequest form);

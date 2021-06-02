@@ -16,21 +16,32 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Component for jwt Bearer token generation, and validation
+ */
 @Component
 @RequiredArgsConstructor
 public class JwtTokenProvider {
     @Value("${security.jwt.token.secret-key:secret}")
-    private String secretKey;
+    private String secretKey; //key, that used for jwt token encoding
     @Value("${security.jwt.token.expire-length:3600000}")
-    private long validityInMilliseconds;
+    private long validityInMilliseconds; //key's life time
     private Algorithm algorithm;
 
+    /**
+     * method for initialization algorithm
+     */
     @PostConstruct
     protected void init() {
         algorithm = Algorithm.HMAC256(secretKey);
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
+    /**
+     * method for creating jwt token based on user info
+     * @param user user info
+     * @return Bearer jwt token
+     */
     public String createToken(User user) {
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
@@ -45,6 +56,11 @@ public class JwtTokenProvider {
                 .sign(algorithm);
     }
 
+    /**
+     * method for token validation
+     * @param token Bearer jwt token
+     * @return true on success
+     */
     public boolean validateToken(String token) {
         try {
             JWTVerifier verifier = JWT.require(algorithm).build();

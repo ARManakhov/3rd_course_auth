@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+/**
+ * Data model of user in database
+ */
 @Data
 @Builder
 @NoArgsConstructor
